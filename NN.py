@@ -4,11 +4,6 @@ from numpy import multiply as multiply_Scalar
 from matrix import *
 
 
-
-
-
-
-
 class NeuralNetwork():
     def __init__(self,ISize,HSize,OSize):
 
@@ -37,6 +32,7 @@ class NeuralNetwork():
         self.learnig_rate = 0.3
 
     def DefinirPesos(self):
+        #define os pesos iniciais de forma aleatoria
 
         for x in range (self.HSize):
             cel = []
@@ -52,6 +48,7 @@ class NeuralNetwork():
             self.PesoHO.append(cel)
     
     def DefinirBias(self):
+        #define os bias iniciais de forma aleatoria
 
         for x in range (0,2):
             cel = []
@@ -68,16 +65,13 @@ class NeuralNetwork():
     
     def treino(self,entrada,saida):
 
-        #Feedfoward:
+        #Feedforward
 
         self.Imput = entrada
         
         #Input -> hiden
 
         self.Hidden = multiplicacaoMatrixial(self.PesoIH,self.Imput)
-        #print(self.Hidden)
-        #print(self.biasIH)
-        #self.Hidden = somaMatrixial(self.Hidden,self.biasIH)
         self.Hidden = sigmoid(self.Hidden)
         
         #hiden -> output
